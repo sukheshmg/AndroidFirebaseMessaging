@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "406705829217",
+    "firebase_url": "https://androidfirebasemessaging-f2241.firebaseio.com",
+    "project_id": "androidfirebasemessaging-f2241",
+    "storage_bucket": "androidfirebasemessaging-f2241.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406705829217:android:ade72577b2ef2157",
+        "android_client_info": {
+          "package_name": "com.example.sukhesh.androidfirebasemessaging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406705829217-k0f2f1r6003k7f710fmu64c99ipgmpj9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_KABesxNKyB7kHh826M9b-cPA3FbkbnI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
