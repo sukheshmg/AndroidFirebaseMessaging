@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.LocalBroadcastManager;
 
 import com.example.sukhesh.androidfirebasemessaging.interaction.LocationUpdater;
+import com.example.sukhesh.androidfirebasemessaging.interaction.MessageResponseUpdater;
 import com.example.sukhesh.androidfirebasemessaging.location.Location;
 import com.example.sukhesh.androidfirebasemessaging.persistence.Store;
 import com.example.sukhesh.androidfirebasemessaging.service.MainActivity;
@@ -29,22 +30,24 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMapLon
 
     private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
-        public void onReceive(Context context, Intent intent) {
+        public void onReceive(Context context, final Intent intent) {
             // TODO Auto-generated method stub
             // Get extra data included in the Intent
             String message = intent.getStringExtra("message");
+            final String messageId = intent.getStringExtra("messageId");
+            final String event = intent.getStringExtra("event");
 
             AlertDialog dialog = new AlertDialog.Builder(_context)
-                    .setTitle("Promotion messate from server")
+                    .setTitle("Messate from " + event)
                     .setMessage(message)
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            System.out.println("User agreed");
+                            MessageResponseUpdater.sendResponse("yes", messageId, event, _context);
                         }
                     })
                     .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            System.out.println("User declined");
+                            MessageResponseUpdater.sendResponse("no", messageId, event,  _context);
                         }
                     })
                     .setIcon(android.R.drawable.ic_dialog_alert).create();

@@ -50,12 +50,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         //Calling method to generate notification
         // sendNotification(remoteMessage.getNotification().getBody());
-        sendNotification(map.get("message") + " with id " + map.get("id"), map.get("id"), map.get("message"));
+        sendNotification(map.get("message") + " with id " + map.get("id"), map.get("id"), map.get("message"), map.get("event"));
     }
 
     //This method is only generating push notification
     //It is same as we did in earlier posts
-    private void sendNotification(String messageBody, String messageId, String message) {
+    private void sendNotification(String messageBody, String messageId, String message, String event) {
 //        Intent intent = new Intent(this, MainActivity.class);
 //        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
@@ -78,6 +78,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Intent intent = new Intent("NEW_MESSAGE");
         intent.putExtra("message", message);
         intent.putExtra("messageId", messageId);
+        intent.putExtra("event", event);
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
 
 //        Looper.prepare();
